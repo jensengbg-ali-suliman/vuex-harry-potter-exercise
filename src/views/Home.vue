@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchField />
+    <p v-for="char in characters" :key="char.id">{{ char.name}}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import SearchField from "../components/SearchField.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    SearchField
+  },
+  computed: {
+    characters() {
+      return this.$store.state.characters.data;
+    }
   }
-}
+};
 </script>
